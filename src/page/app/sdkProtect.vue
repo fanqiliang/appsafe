@@ -38,8 +38,8 @@
                 </el-table-column>
                 <el-table-column label="操作" width="200">
                     <template slot-scope="scope">
+                        <el-link type="primary" :underline="false" @click="seeClasses(scope.row)" style="margin-right: 16px">查看加固类</el-link>
                         <el-link v-if="scope.row.status === 4" type="warning" :underline="false" @click="reStartTask(scope.row)" style="margin-right: 16px">重新加固</el-link>
-                        <!-- <el-link v-if="scope.row.status === 3" type="primary" :underline="false" @click="downloadPackage(scope.row)" style="margin-right: 16px"> -->
                         <el-dropdown v-if="scope.row.status === 3" @command="downloadPackage">
                             <el-link type="primary" :underline="false">下载</el-link>
                             <el-dropdown-menu slot="dropdown">
@@ -60,7 +60,8 @@
                 :total="queryForm.total">
             </el-pagination>
         </div>
-        <upload-sdk-modal v-if="modal.uploadSdkModal.show" @close="closeUploadSdkModal"></upload-sdk-modal>
+        <upload-sdk-modal v-if="modal.uploadSdkModal.show" @close="closeUploadSdkModal" :modalData="modal.uploadSdkModal"></upload-sdk-modal>
+        <sdk-protect-class-modal v-if="modal.sdkProtectClassModal.show" @close="closeSdkProtectClassModal" :modalData="modal.sdkProtectClassModal"></sdk-protect-class-modal>
     </div>
 </template>
 
@@ -68,11 +69,13 @@
 import { PROTECT_STATUS } from '@/assets/config/constant'
 import { byteWithUnitFloat } from '@/utils/util'
 import uploadSdkModal from '@/components/appManage/uploadSdkModal'
+import sdkProtectClassModal from '@/components/appManage/sdkProtectClassModal'
 import qs from 'qs'
 
 export default {
     components: {
-        uploadSdkModal
+        uploadSdkModal,
+        sdkProtectClassModal
     },
 
     data() {
@@ -87,6 +90,10 @@ export default {
             modal: {
                 uploadSdkModal: {
                     show: false
+                },
+                sdkProtectClassModal: {
+                    show: false,
+                    data: ['111','222','333']
                 }
             },
             queryInterval: null
@@ -144,6 +151,19 @@ export default {
                     this.getTableData()
                 })
             })
+        },
+
+        seeClasses(row) {
+            this.modal.sdkProtectClassModal.data = row.classes
+            this.openSdkProtectClassModal()
+        },
+
+        openSdkProtectClassModal() {
+            this.modal.sdkProtectClassModal.show = true
+        },
+
+        closeSdkProtectClassModal() {
+            this.modal.sdkProtectClassModal.show = false
         },
 
         downloadPackage(info) {

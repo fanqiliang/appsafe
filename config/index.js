@@ -7,7 +7,7 @@ const path = require('path')
 const serverIp = {
   // target: 'http://175.24.114.58',// 设置你调用的接口域名和端口号 别忘了加http
   //  target: 'http://www.nobugnobug.club/',// 设置你调用的接口域名和端口号 别忘了加http
-   target: 'http://111.231.110.168:8088/',// 设置你调用的接口域名和端口号 别忘了加http
+   target: 'http://111.231.110.168:8080/',// 设置你调用的接口域名和端口号 别忘了加http
   //  target: 'http://192.168.81.27:8080/',// 设置你调用的接口域名和端口号 别忘了加http
   //  target: 'http://192.168.81.157:8890/',// 设置你调用的接口域名和端口号 别忘了加http sunjian
   //  target: 'http://192.168.66.92:8080/',// 设置你调用的接口域名和端口号 别忘了加http

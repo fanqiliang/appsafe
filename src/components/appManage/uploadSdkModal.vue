@@ -5,7 +5,7 @@
             :visible="true" 
             :close-on-click-modal="false" 
             @close="close()"
-            width="480px" 
+            width="580px" 
             top="200px"
         >
             <div class="pr">
@@ -27,6 +27,9 @@
                     </el-form-item>
                     <el-form-item label="文件大小" prop="size">
                         <el-input v-model="ruleForm.size" class="form-item-input" :disabled="true"></el-input>
+                    </el-form-item>
+                    <el-form-item label="定制加固" prop="classes">
+                        <el-input type="textarea" class="form-item-input" :rows="5" placeholder="请输入指定类名，多个类名逗号分隔" v-model="ruleForm.classes"></el-input>
                     </el-form-item>
                 </el-form>
             </div>
@@ -58,6 +61,7 @@ export default {
                 id: '',
                 name: '',
                 size: '',
+                classes: '',
             },
             filePercent: 0,
             uploadStatus: STATUS_TYPE.empty,
@@ -69,7 +73,8 @@ export default {
         submitTask() {
             const loading = createLoading()
             this.$store.dispatch('basic/submitSdkProtectTask', {
-                id: this.ruleForm.id
+                id: this.ruleForm.id,
+                classes: this.ruleForm.classes
             }).then(res => {
                 this.close('submit')
                 loading.close()
@@ -117,7 +122,7 @@ export default {
 
 <style lang="less" scoped>
     .form-item-input {
-        width: 200px;
+        width: 300px;
         margin-right: 20px;
     }
 </style>

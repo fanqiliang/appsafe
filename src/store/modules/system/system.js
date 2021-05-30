@@ -48,6 +48,10 @@ const actions = {
 		return axios.post('/appsafe/license/upload', payload)
 	},
 
+	querySystemInfo() {
+		return axios.get('/appsafe/system/info')
+	},
+
 }
 
 // mutations

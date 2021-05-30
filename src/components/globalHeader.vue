@@ -9,9 +9,9 @@
                     </span>
                 </div>
                 <div class="right flex flex-center h100">
-                    <div class="version-box" style="margin-right: 24px">
+                    <!-- <div class="version-box" style="margin-right: 24px">
                         系统版本:&nbsp;&nbsp;{{stateGlobal.defaultSetting.version}}
-                    </div>
+                    </div> -->
                     <div class="user-name version-box" @mouseenter="showUserBtn" @mouseleave="hideUserBtn">
                         <div v-if="userBtnShow" class="hover-box">
                             <div class="hover-item logout" @click="logout">安全退出</div>

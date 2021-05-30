@@ -5,7 +5,7 @@
             :visible="true" 
             :close-on-click-modal="false" 
             @close="close()"
-            width="480px" 
+            width="580px" 
             top="200px"
         >
             <div class="pr">
@@ -117,7 +117,7 @@ export default {
 
 <style lang="less" scoped>
     .form-item-input {
-        width: 200px;
+        width: 300px;
         margin-right: 20px;
     }
 </style>
